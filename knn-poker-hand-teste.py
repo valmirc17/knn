@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 
 #  Lê um arquivo .csv e o transforma em um Dataframe
-dados = pd.read_csv('poker-hand-testing.data', sep=',')
+dados = pd.read_csv('dados_normalizados.csv', sep=',')
 
 #Exclui os registros que possuem atributos faltantes
 dados.dropna(inplace=True)
@@ -20,7 +20,7 @@ y = np.array(dados.iloc[:,-1])  #classes
 X_train, X_test, Y_train, Y_test = train_test_split(x, y, test_size=0.3, train_size=0.7)
 
 #Escolha do modelo a ser utilizado
-neighbor = 7
+neighbor = 3
 knn=KNeighborsClassifier(neighbor)
 knn.fit(X_train,Y_train)
 previsoes = knn.predict(X_test)
